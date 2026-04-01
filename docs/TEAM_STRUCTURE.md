@@ -1,12 +1,12 @@
-# Project Team and Responsibility Matrix
+# Project Team and Responsibility Matrix (Updated)
 
-This document outlines the division of documentation and project ownership between technical team members.
+This document reflects the updated division of ownership.
 
 ## 👥 Team Members
 
-- **Otabek** - Team Lead (Architecture & Management)
-- **Sobirjon** - Senior Backend Engineer (Data & API)
-- **Doni** - Senior Frontend Engineer (UI & UX)
+- **Otabek** - Team Lead (Backend & Architecture)
+- **Sobirjon** - Senior Web Frontend Engineer
+- **Doni** - Mobile & PWA Engineer
 
 ---
 
@@ -18,10 +18,11 @@ This document outlines the division of documentation and project ownership betwe
 | `PROJECT_STRUCTURE.md` | **Otabek** | Repository layout and standards |
 | `PRODUCTION.md` | **Otabek** | Deployment and environment management |
 | `TZ.md` | **Otabek** | Project initialization and core specs |
-| `API_DESIGN.md` | **Sobirjon** | Endpoint architecture and communication protocol |
-| `DATA_MODELS.md` | **Sobirjon** | Database schema and object types |
-| `SYNC_ENGINE.md` | **Sobirjon** | Synchronization logic and conflict resolution |
-| `FRONTEND.md` | **Doni** | React components and state management |
+| `API_DESIGN.md` | **Otabek** | Endpoint architecture and communication protocol |
+| `DATA_MODELS.md` | **Otabek** | Database schema and object types |
+| `FRONTEND.md` | **Sobirjon** | Web UI components and state management |
+| `SYNC_ENGINE.md` | **Sobirjon** | Web-side synchronization logic |
+| `MOBILE.md` | **Doni** | Mobile application development |
 | `PWA.md` | **Doni** | Progressive Web App configuration |
 | `OFFLINE_FIRST.md` | **Doni** | Offline functionality and cache strategies |
 | `NOTIFICATIONS.md` | **Doni** | Push notifications and user alerts |
@@ -33,21 +34,18 @@ This document outlines the division of documentation and project ownership betwe
 | Section | Owner | Topic |
 | :--- | :--- | :--- |
 | `00_INDEX.md` | **Otabek** | Guide Index |
-| `01_OVERVIEW.md` | **Otabek** | General project overview |
-| `02_GOALS.md` | **Otabek** | Business and technical goals |
 | `06_ARCHITECTURE.md` | **Otabek** | Deep-dive architectural specs |
+| `10_BACKEND.md` | **Otabek** | Core backend logic |
 | `14_SECURITY.md` | **Otabek** | Security protocols and auth |
 | `15_STRUCTURE.md` | **Otabek** | Codebase and directory structure |
-| `17_DOD.md` | **Otabek** | Definition of Done & Quality metrics |
-| `07_DATA_MODELS.md` | **Sobirjon** | Backend Data models |
-| `08_API.md` | **Sobirjon** | Detailed API spec |
-| `10_BACKEND.md` | **Sobirjon** | Core backend logic |
-| `11_OFFLINE_SYNC.md`| **Sobirjon** | Background sync mechanism |
-| `16_ENV.md` | **Sobirjon** | Environment configuration |
-| `03_FUNCTIONAL.md` | **Doni** | Functional requirements |
-| `04_NONFUNCTIONAL.md` | **Doni** | UX/Performance requirements |
-| `05_TECH_STACK.md` | **Doni** | Frontend stack & Styling |
-| `09_FRONTEND.md` | **Doni** | Frontend implementation details |
+| `16_ENV.md` | **Otabek** | Environment configuration |
+| `17_DOD.md` | **Otabek** | Definition of Done |
+| `05_TECH_STACK.md` | **Sobirjon** | Web Technology Stack |
+| `09_FRONTEND.md` | **Sobirjon** | Implementation details (Web) |
+| `03_FUNCTIONAL.md` | **Sobirjon** | Web Functional requirements |
+| `04_NONFUNCTIONAL.md` | **Sobirjon** | Web UX/Performance requirements |
+| `07_DATA_MODELS.md` | **Sobirjon** | Client-side Data models |
+| `11_OFFLINE_SYNC.md`| **Doni** | Background sync mechanism |
 | `12_PWA.md` | **Doni** | Service workers & Manifest |
 | `13_PUSH.md` | **Doni** | Push notifications implementation |
 
@@ -56,19 +54,15 @@ This document outlines the division of documentation and project ownership betwe
 ## 🚀 Key Responsibilities
 
 ### **Otabek (Team Lead)**
-- Code reviews and Merge Request approvals.
-- High-level architectural decisions.
-- Production environment stability.
-- Ensuring the project follows the "Definition of Done".
+- **Backend**: Server logic, database schemas, and API design.
+- **Leadership**: Code reviews, Architectural strategy, and Production deployment.
 
-### **Sobirjon (Backend)**
-- Database schema design (MongoDB).
-- REST API implementation & optimization.
-- Secure data synchronization and offline engine.
-- Managing server logs and environment variables.
+### **Sobirjon (Web Frontend)**
+- **Web UI**: Building the main dashboard and e-commerce web platform.
+- **Frontend Architecture**: Managing React/Vite project structure and styles.
+- **User Interface**: Optimizing for performance and premium design aesthetics.
 
-### **Doni (Frontend)**
-- UI/UX implementation and premium styling.
-- PWA setup and Service Worker logic.
-- Real-time client-side synchronization.
-- Push notifications integration.
+### **Doni (Mobile)**
+- **Mobile Development**: Managing the PWA and mobile-specific modules.
+- **Notifications**: Implementation of Push notifications across devices.
+- **Offline Logic**: Ensuring the application works seamlessly without internet.
