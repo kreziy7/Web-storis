@@ -1,26 +1,25 @@
 import admin from 'firebase-admin';
-import { createRequire } from 'module';
-import { fileURLToPath } from 'url';
-import path from 'path';
 
-// Load service account JSON
-const require = createRequire(import.meta.url);
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const serviceAccount = require(path.resolve(__dirname, '../../smart-reminder-67da6-firebase-adminsdk-fbsvc-f7863ba64c.json'));
-
-// Initialize Firebase Admin once
+// Initialize Firebase Admin using environment variable
 if (!admin.apps.length) {
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-    });
+    const firebaseEnv = process.env.FIREBASE_SERVICE_ACCOUNT;
+    if (firebaseEnv) {
+        const serviceAccount = JSON.parse(firebaseEnv);
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+        });
+    } else {
+        console.warn('[FCM] FIREBASE_SERVICE_ACCOUNT env not set — FCM disabled');
+    }
 }
 
-const messaging = admin.messaging();
+const messaging = admin.apps.length ? admin.messaging() : null;
 
 /**
  * Send push notification to a single FCM token
  */
 export async function sendToToken(fcmToken, { title, body, data = {} }) {
+    if (!messaging) return false;
     try {
         await messaging.send({
             token: fcmToken,
@@ -38,7 +37,6 @@ export async function sendToToken(fcmToken, { title, body, data = {} }) {
         });
         return true;
     } catch (err) {
-        // Token invalid or unregistered → remove it
         if (
             err.code === 'messaging/invalid-registration-token' ||
             err.code === 'messaging/registration-token-not-registered'
