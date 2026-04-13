@@ -21,7 +21,7 @@ export const register = asyncHandler(async (req, res) => {
     const { accessToken, refreshToken } = generateTokens(user._id);
 
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
-    res.status(201).json({ user: { id: user._id, email: user.email, name: user.name }, accessToken });
+    res.status(201).json({ user: { id: user._id, email: user.email, name: user.name, role: user.role }, accessToken });
 });
 
 export const login = asyncHandler(async (req, res) => {
@@ -32,10 +32,17 @@ export const login = asyncHandler(async (req, res) => {
         throw new ApiError(401, 'Invalid email or password');
     }
 
+    if (user.isBanned) {
+        throw new ApiError(403, 'Your account has been banned');
+    }
+
+    user.lastLoginAt = new Date();
+    await user.save();
+
     const { accessToken, refreshToken } = generateTokens(user._id);
 
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
-    res.json({ user: { id: user._id, email: user.email, name: user.name }, accessToken });
+    res.json({ user: { id: user._id, email: user.email, name: user.name, role: user.role }, accessToken });
 });
 
 export const refresh = asyncHandler(async (req, res) => {
@@ -54,7 +61,7 @@ export const refresh = asyncHandler(async (req, res) => {
         const { accessToken, refreshToken: newRefreshToken } = generateTokens(user._id);
 
         res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
-        res.json({ user: { id: user._id, email: user.email, name: user.name }, accessToken });
+        res.json({ user: { id: user._id, email: user.email, name: user.name, role: user.role }, accessToken });
     } catch (error) {
         throw new ApiError(401, 'Invalid refresh token');
     }

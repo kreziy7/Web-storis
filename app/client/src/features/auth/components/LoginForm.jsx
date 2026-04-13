@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
+import { useTranslation } from '../../../shared/hooks/useTranslation';
 import Button from '../../../shared/components/Button';
 import Input from '../../../shared/components/Input';
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
-    const { login, isLoading, error } = useAuthStore();
+    const { login, loginAsDemo, isLoading, error } = useAuthStore();
+    const { t } = useTranslation();
+    const a = t.auth;
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -22,12 +25,12 @@ const LoginForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="auth-form">
-            <h2>Login</h2>
+            <h2>{a.login}</h2>
             {error && <div className="error-alert">{error}</div>}
 
             <Input
                 id="email"
-                label="Email"
+                label={a.email}
                 type="email"
                 placeholder="you@example.com"
                 value={formData.email}
@@ -37,7 +40,7 @@ const LoginForm = () => {
 
             <Input
                 id="password"
-                label="Password"
+                label={a.password}
                 type="password"
                 placeholder="••••••••"
                 value={formData.password}
@@ -46,7 +49,19 @@ const LoginForm = () => {
             />
 
             <Button type="submit" isLoading={isLoading} size="lg" className="w-full">
-                Sign In
+                {a.signIn}
+            </Button>
+
+            <div className="demo-divider"><span>{a.or}</span></div>
+
+            <Button
+                type="button"
+                variant="secondary"
+                size="lg"
+                className="w-full"
+                onClick={loginAsDemo}
+            >
+                {a.tryDemo}
             </Button>
         </form>
     );

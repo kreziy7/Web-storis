@@ -11,7 +11,15 @@ const app = express();
 // Middleware
 app.use(helmet());
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: (origin, callback) => {
+        // Allow requests with no origin (mobile apps, curl, Postman)
+        if (!origin) return callback(null, true);
+        // Allow all localhost ports in development
+        if (/^http:\/\/localhost(:\d+)?$/.test(origin)) return callback(null, true);
+        // Allow configured CLIENT_URL in production
+        if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+    },
     credentials: true
 }));
 app.use(express.json());

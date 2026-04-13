@@ -1,0 +1,239 @@
+/* ── Sound Settings ──────────────────────────────────────── */
+.sound-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.sound-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+}
+
+.sound-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    flex: 1;
+    letter-spacing: -0.02em;
+}
+
+.sound-preview-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 5px 11px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+}
+
+.sound-preview-btn:hover {
+    border-color: var(--primary);
+    color: var(--text-main);
+    background: var(--bg-card);
+}
+
+.sound-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: -8px;
+}
+
+/* ── Source tabs ── */
+.sound-source-tabs {
+    display: flex;
+    gap: 6px;
+}
+
+.sound-tab {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+}
+
+.sound-tab:hover {
+    border-color: var(--border-active);
+    color: var(--text-main);
+}
+
+.sound-tab-active {
+    background: var(--primary-dim) !important;
+    border-color: var(--border-active) !important;
+    color: var(--text-main) !important;
+}
+
+/* ── Preset grid ── */
+.sound-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+}
+
+.sound-preset-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 8px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    font-family: inherit;
+}
+
+.sound-preset-btn:hover {
+    border-color: var(--border-active);
+    color: var(--text-main);
+    transform: translateY(-1px);
+}
+
+.sound-preset-active {
+    background: var(--primary-dim) !important;
+    border-color: var(--border-active) !important;
+    color: var(--text-main) !important;
+}
+
+.preset-emoji { font-size: 1.4rem; line-height: 1; }
+.preset-name  { font-size: 0.74rem; font-weight: 600; }
+
+.preset-check {
+    position: absolute;
+    top: 6px; right: 6px;
+    color: var(--success);
+}
+
+/* ── Random info ── */
+.sound-random-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* ── Drop zone ── */
+.sound-drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 24px 16px;
+    background: var(--bg-elevated);
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    font-size: 0.84rem;
+}
+
+.sound-drop-zone:hover {
+    border-color: var(--border-active);
+    color: var(--text-main);
+    background: var(--bg-card);
+}
+
+.drop-zone-active {
+    border-color: var(--primary) !important;
+    background: var(--primary-dim) !important;
+    color: var(--text-main) !important;
+}
+
+.drop-filename {
+    font-weight: 600;
+    color: var(--text-main);
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.drop-duration {
+    font-size: 0.72rem;
+    font-family: monospace;
+    color: var(--success);
+}
+
+.drop-hint {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+}
+
+/* ── Status ── */
+.sound-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 13px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.sound-status-success {
+    background: var(--success-dim);
+    border: 1px solid rgba(92,184,92,0.3);
+    color: var(--success);
+}
+
+.sound-status-error {
+    background: var(--error-dim);
+    border: 1px solid rgba(224,92,92,0.3);
+    color: var(--error);
+}
+
+.sound-status-info {
+    background: var(--primary-dim);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+/* ── Reset ── */
+.sound-reset-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+    font-family: inherit;
+    align-self: flex-start;
+}
+
+.sound-reset-btn:hover { color: var(--text-muted); }
+
+/* ── Spin ── */
+.spin-icon { animation: spin-sound 0.8s linear infinite; }
+@keyframes spin-sound { to { transform: rotate(360deg); } }

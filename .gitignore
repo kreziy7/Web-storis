@@ -31,3 +31,6 @@ coverage/
 *.temp
 .DS_Store
 Thumbs.db
+
+# Firebase service account (sensitive credentials)
+*firebase-adminsdk*.json

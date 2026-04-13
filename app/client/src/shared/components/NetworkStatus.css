@@ -1,0 +1,45 @@
+.network-status {
+    position: fixed;
+    top: 64px; left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem; font-weight: 600;
+    display: flex; align-items: center; gap: 7px;
+    z-index: 500; box-shadow: var(--shadow);
+    animation: popIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: monospace;
+}
+
+@keyframes popIn {
+    from { transform: translateX(-50%) translateY(-10px); opacity: 0; }
+    to   { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+.network-status.offline {
+    background: rgba(34, 40, 49, 0.95);
+    border: 1px solid rgba(224, 92, 92, 0.3);
+    color: var(--error);
+}
+
+.network-status.online {
+    background: rgba(34, 40, 49, 0.95);
+    border: 1px solid rgba(92, 184, 92, 0.3);
+    color: var(--success);
+}
+
+.network-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%; flex-shrink: 0;
+}
+
+.offline .network-dot { background: var(--error); animation: blink 1.2s infinite; }
+.online .network-dot  { background: var(--success); box-shadow: 0 0 5px rgba(92, 184, 92, 0.5); }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
