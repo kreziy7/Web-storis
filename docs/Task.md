@@ -29,20 +29,12 @@
 
 ---
 
-## Приоритет 1 — Backend: Reminders API
+## ~~Приоритет 1 — Backend: Reminders API~~ ✅ ГОТОВО (2026-04-15)
 
-> Без этого фронтенд не может синхронизироваться с сервером.
-
-- [ ] **`models/Reminder.model.js`** — Mongoose схема:
-  `id, userId, clientId, title, description, dueDate, priority, tags, isCompleted, isDeleted, deletedAt, version, updatedAt, createdAt, isSynced`
-- [ ] **`validators/reminder.validators.js`** — express-validator правила
-- [ ] **`middleware/validate.js`** — вызов `validationResult`, бросает ApiError
-- [ ] **`middleware/rateLimiter.js`** — globalLimiter, authLimiter, syncLimiter (express-rate-limit)
-- [ ] **`services/reminders.service.js`** — CRUD + пагинация + фильтрация + ownership check
-- [ ] **`controllers/reminders.controller.js`** — getAll, getOne, create, update, delete
-- [ ] **`routes/reminders.routes.js`** — `/api/v1/reminders` (auth protected)
-- [ ] Подключить rateLimiter в `app.js`
-- [ ] Добавить `/api/v1/reminders` в `routes/index.js`
+- [x] `models/Reminder.model.js`
+- [x] `controllers/reminders.controller.js` — getAll, create, update, remove, sync
+- [x] `routes/reminders.routes.js` — `/api/v1/reminders` (auth protected)
+- [x] `routes/index.js` — подключён
 
 ---
 
@@ -100,13 +92,14 @@
 ## Прогресс
 
 ```
-Деплой Fly.io           [ ] 0/7   ← ПРИОРИТЕТ (fly.toml готов)
-Backend Reminders API   [ ] 0/9   ← ПРИОРИТЕТ
 Backend Sync API        [ ] 0/5   ← ПРИОРИТЕТ
 Backend Auth улучшения  [ ] 0/4
 Infra (.env, docker)    [ ] 0/3
 PWA / Push QA           [ ] 0/6
 
+Backend Reminders API   [x] done (2026-04-15)
+Firebase FCM            [x] done (2026-04-15) — FIREBASE_SERVICE_ACCOUNT в Render
+Деплой Render           [x] done — https://web-storis.onrender.com
 Backend Push API        [x] done
 Backend Profile API     [x] done
 Frontend PWA            [x] done
@@ -114,7 +107,6 @@ Frontend Notifications  [x] done (FCM + SW + in-app + TimestampTrigger fix)
 Frontend Profile        [x] done
 Frontend Admin          [x] done
 Deploy конфиги          [x] done (Dockerfile, fly.toml, .dockerignore)
-FCM path fix            [x] done
 ```
 
 ---

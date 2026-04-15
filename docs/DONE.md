@@ -152,6 +152,20 @@
 
 ---
 
+## Добавлено 2026-04-15 — Reminders API & Firebase FCM
+
+### Backend: Reminders API
+- [x] `models/Reminder.model.js` — Mongoose схема: clientId, userId, title, description, dueDate, priority, tags, isCompleted, isDeleted, deletedAt, version, notified, timestamps
+- [x] `controllers/reminders.controller.js` — getAll, create, update, remove, sync (batch)
+- [x] `routes/reminders.routes.js` — protected routes под `/api/v1/reminders`
+- [x] `routes/index.js` — подключён `/reminders` роутер
+
+### Backend: Firebase FCM
+- [x] `FIREBASE_SERVICE_ACCOUNT` добавлен в Render Environment — FCM активен
+- [x] Сервер на Render: https://web-storis.onrender.com — live ✅
+
+---
+
 ## Добавлено 2026-04-12 — Deploy подготовка & уведомления фикс
 
 ### Backend: Deploy конфиги
