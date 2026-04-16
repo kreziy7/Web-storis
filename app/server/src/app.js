@@ -16,6 +16,10 @@ app.use(cors({
         if (!origin) return callback(null, true);
         // Allow all localhost ports in development
         if (/^http:\/\/localhost(:\d+)?$/.test(origin)) return callback(null, true);
+        // Allow Capacitor mobile app (Android/iOS)
+        if (origin === 'capacitor://localhost') return callback(null, true);
+        if (origin === 'https://localhost') return callback(null, true);
+        if (origin === 'http://localhost') return callback(null, true);
         // Allow configured CLIENT_URL in production
         if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) return callback(null, true);
         callback(new Error('Not allowed by CORS'));
